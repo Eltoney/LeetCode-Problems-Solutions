@@ -17,8 +17,13 @@ class Solution {
             return;
         }
         mp[col].push_back({row,root -> val});
-        DFS(root -> left , row + 1 , col - 1);
-        DFS(root -> right, row + 1 , col + 1);
+        if(root -> left != NULL){
+            DFS(root -> left , row + 1 , col - 1);
+        }
+        if(root -> right != NULL){
+            DFS(root -> right, row + 1 , col + 1);
+        }
+        
     }
     
 public:
