@@ -16,7 +16,7 @@ class Solution {
     }
 public:
     int numberOfWays(int startPos, int endPos, int k) {
-        vector<vector<int>> mem(k + 1 , vector<int>(100000 , -1));
+        vector<vector<int>> mem(k + 1 , vector<int>(3005 , -1));
         int MOD = (int)1e9 + 7;
         return dp(0 , k , startPos + 1000 , endPos + 1000 , MOD , mem)  % MOD;
     }
