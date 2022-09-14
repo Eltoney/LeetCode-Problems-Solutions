@@ -10,21 +10,13 @@
  * };
  */
 class Solution {
-    bool checkPal(vector<int> path){
-        int o = 0;
-        for(auto x : path){
-            o += (x % 2);
-        }
-        return (o < 2);
-    }
-    
-    int DFS(TreeNode *root , vector<int> path){
+    int DFS(TreeNode *root ,int path){
         if(root == NULL){
             return 0;
         }
-        path[root -> val]++;
+        path ^= (1 << (root -> val));
         if(root -> right == NULL && root -> left == NULL){
-            return checkPal(path);
+            return (path == 0 || path == pow(2 , (int)log2(path)));
         }else{
              int ans = 0;
              ans += DFS(root -> left , path);
@@ -34,7 +26,7 @@ class Solution {
     }
 public:
     int pseudoPalindromicPaths (TreeNode* root) {
-        vector<int> path(10);
+        int path = 0;
         int ans = DFS(root , path);
         return ans;
     }
