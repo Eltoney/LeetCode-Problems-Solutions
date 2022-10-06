@@ -13,7 +13,7 @@ class TimeMap {
         return ans;
     }
 public:
-    map<string,vector<pair<int,string>>> mp;
+    unordered_map<string,vector<pair<int,string>>> mp;
     TimeMap() {
         mp.clear();
     }
@@ -28,7 +28,6 @@ public:
         }
         pair<int,string> cur = {timestamp , ""};
         int id = bsTimestamp(mp[key] , timestamp);
-        cout<<id<<'\n';
         if(id == -1){
             return "";
         }
